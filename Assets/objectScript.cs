@@ -12,8 +12,8 @@ public class objectScript : MonoBehaviour
 
     private void Awake()
     {
-       // objParent.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-       // objParent.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+        objParent.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //objParent.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
 
@@ -45,6 +45,10 @@ public class objectScript : MonoBehaviour
 
 
         objParent.transform.localScale += Vector3.one * scaleFactor;
+        objParent.transform.localScale = new Vector3(
+            Mathf.Clamp(objParent.transform.localScale.x, 0.1f, 1f),
+            Mathf.Clamp(objParent.transform.localScale.y, 0.1f, 1f),
+            Mathf.Clamp(objParent.transform.localScale.z, 0.1f, 1f));
 
 
     }

@@ -23,7 +23,10 @@ public class TouchScript : MonoBehaviour
     private state Stat;
     private Vector3 startPos;
 
-    public float SensevityScale = 0.001f;
+    // для корутины движения
+    private bool isMoving = false;
+
+    public float SensevityScale = 0.00000001f;
     public float rotationSpeed = 540f; // скорость вращения
 
     // ------------------------------------------
@@ -67,6 +70,10 @@ public class TouchScript : MonoBehaviour
         if (str == "scale")
         {
             Stat = state.scale;
+        }
+        if (str == "inside")
+        {
+            Stat = state.inside;
         }
         text.text = Stat.ToString();
     }
@@ -147,6 +154,7 @@ public class TouchScript : MonoBehaviour
         if (!targetScript) return;
         float delta = dist - (_pos1 - _pos2).magnitude;
         targetScript.Scale(delta * SensevityScale);
+        
     }
 
     void OnZoomEnd(Vector3 _pos1, Vector3 _pos2)
@@ -154,94 +162,129 @@ public class TouchScript : MonoBehaviour
         target = null;
     }
 
+    // перемещает КАМЕРУ
+    void FloorChange(bool _toUp, float _time)
+    {
+        Ray ray = new Ray(cam_tr.transform.position, _toUp ? Vector3.up : Vector3.down); // делаем луч ВВЕРХ или ВНИЗ
+        Vector3 point = GetTeleportPoint(ray); // ищем точку
+        if (point != cam_tr.transform.position) // если точка не равна исходной
+            SmoothMove(cam_tr.transform, cam_tr.transform.position, point, _time); // двигаем
+    }
+
+    // перемещает ТРАНСФОРМ
+    void FloorChange(Transform _tr, Ray _ray, float _time)
+    {
+        Vector3 point = GetTeleportPoint(_ray); // ищем точку
+        if (point != _ray.origin) // если точка не равна исходной
+            SmoothMove(_tr, _ray.origin, point, _time); // двигаем
+    }
+
     void Update()
     {
 #if UNITY_EDITOR
-
         switch (Stat)
         {
             case state.move:
-
-                if (Input.GetMouseButtonDown(0))
-                    OnMoveStart(Input.mousePosition);
-                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0))
-                    OnMoveStay(Input.mousePosition);
-                if (!Input.GetMouseButton(0))
-                    OnMoveEnd(Vector3.zero);
-                break;
+                {
+                    if (Input.GetMouseButtonDown(0))
+                        OnMoveStart(Input.mousePosition);
+                    if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0))
+                        OnMoveStay(Input.mousePosition);
+                    if (!Input.GetMouseButton(0))
+                        OnMoveEnd(Vector3.zero);
+                    break;
+                }
 
             //поворот
             case state.rotation:
-
-                if (Input.GetMouseButtonDown(0))
-                    OnRotateStart(Input.mousePosition);
-                if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0))
-                    OnRotateStay(Input.mousePosition);
-                if (!Input.GetMouseButton(0))
-                    OnRotateEnd(Vector3.zero);
-                break;
+                {
+                    if (Input.GetMouseButtonDown(0))
+                        OnRotateStart(Input.mousePosition);
+                    if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0))
+                        OnRotateStay(Input.mousePosition);
+                    if (!Input.GetMouseButton(0))
+                        OnRotateEnd(Vector3.zero);
+                    break;
+                }
 
             case state.scale:
+                {
+                    if (Input.GetAxis("Mouse ScrollWheel") != 0)
+                    {
+                        OnZoomStart(Vector3.left, Vector3.right);
+                        OnZoomStay(Vector3.left, Vector3.right * (1 + Input.GetAxis("Mouse ScrollWheel"))); // типа двигаем правый тач
+                    }
+                    else
+                    {
+                        OnZoomEnd(Vector3.zero, Vector3.zero);
+                    }
+                    break;
+                }
 
-                if (Input.GetAxis("Mouse ScrollWheel") != 0)
+            case state.inside:
                 {
-                    OnZoomStart(Vector3.left, Vector3.right);
-                    OnZoomStay(Vector3.left, Vector3.right * (1 + Input.GetAxis("Mouse ScrollWheel"))); // типа двигаем правый тач
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                        Vector3 new_pos = GetTeleportPoint(ray); // метод поиска точки
+                        new_pos.y += cam_height; // поднимаем точку на высоту камеры
+                        world_tr.transform.position += (Camera.main.transform.position - new_pos);
+                    }
+                    break;
                 }
-                else
-                {
-                    OnZoomEnd(Vector3.zero, Vector3.zero);
-                }
-                break;
         }
 #endif
-
         switch (Stat)
         {
-
             case state.move:
-
-                if (Input.touchCount == 1)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    if (touch.phase == TouchPhase.Began)
-                        OnMoveStart(touch.position);
-                    if (touch.phase == TouchPhase.Moved)
-                        OnMoveStay(touch.position);
-                    if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                        OnMoveEnd(touch.position);
+                    if (Input.touchCount == 1)
+                    {
+                        Touch touch = Input.GetTouch(0);
+                        if (touch.phase == TouchPhase.Began)
+                            OnMoveStart(touch.position);
+                        if (touch.phase == TouchPhase.Moved)
+                            OnMoveStay(touch.position);
+                        if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                            OnMoveEnd(touch.position);
+                    }
+                    break;
                 }
-                break;
             case state.rotation:
-
-                if (Input.touchCount == 1)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    if (touch.phase == TouchPhase.Began)
-                        OnRotateStart(touch.position);
-                    if (touch.phase == TouchPhase.Moved)
-                        OnRotateStay(touch.position);
-                    if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                        OnRotateEnd(touch.position);
+                    if (Input.touchCount == 1)
+                    {
+                        Touch touch = Input.GetTouch(0);
+                        if (touch.phase == TouchPhase.Began)
+                            OnRotateStart(touch.position);
+                        if (touch.phase == TouchPhase.Moved)
+                            OnRotateStay(touch.position);
+                        if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                            OnRotateEnd(touch.position);
+                    }
+                    break;
                 }
-                break;
             case state.scale:
-                if (Input.touchCount == 2)
                 {
-                    Touch touch1 = Input.GetTouch(0);
-                    Touch touch2 = Input.GetTouch(1);
-                    if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
-                        OnZoomStart(touch1.position, touch2.position);
-                    if ((touch1.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Stationary) && // тач1 стоит или двигается
-                       (touch2.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Stationary) && // тач2  стоит или двигается
-                       (touch1.phase != TouchPhase.Stationary && touch2.phase != TouchPhase.Stationary)) // тач1 не стоит && тач2 не стоит
-                        OnZoomStay(touch1.position, touch2.position);
-                    if (touch1.phase == TouchPhase.Ended || touch2.phase == TouchPhase.Ended ||
-                       touch1.phase == TouchPhase.Canceled || touch2.phase == TouchPhase.Canceled)
-                        OnZoomEnd(touch1.position, touch2.position);
+                    if (Input.touchCount == 2)
+                    {
+                        Touch touch1 = Input.GetTouch(0);
+                        Touch touch2 = Input.GetTouch(1);
+                        if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
+                            OnZoomStart(touch1.position, touch2.position);
+                        if ((touch1.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Stationary) && // тач1 стоит или двигается
+                           (touch2.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Stationary) && // тач2  стоит или двигается
+                           (touch1.phase != TouchPhase.Stationary && touch2.phase != TouchPhase.Stationary)) // тач1 не стоит && тач2 не стоит
+                            OnZoomStay(touch1.position, touch2.position);
+                        if (touch1.phase == TouchPhase.Ended || touch2.phase == TouchPhase.Ended ||
+                           touch1.phase == TouchPhase.Canceled || touch2.phase == TouchPhase.Canceled)
+                            OnZoomEnd(touch1.position, touch2.position);
+                    }
+                    break;
                 }
-                break;
         }
+
+
     }
     public void Inside()
     {
@@ -251,11 +294,19 @@ public class TouchScript : MonoBehaviour
             objTemp.Inside();
         }
     }
+
     #region move_control_Inside
-    private Vector3 MoveTo(Ray _ray)
+
+    private Camera cam_tr;
+    private float cam_height = 0;
+    public Transform world_tr;
+
+    private Vector3 GetTeleportPoint(Ray _ray)
     {
         bool toUp = _ray.direction.y > 0f ? true : false; // вверх или вниз?
         RaycastHit[] rhs = Physics.RaycastAll(_ray, 100f, layer_floor); // рейкастим насквозь
+        if (rhs.Length == 0) return _ray.origin; // если ни одной точки - возвращаем исходную точку
+
         int min1 = 0; // индекс ближайшего
         int min2 = -1; // индекс следующего после ближайшего
         if (rhs.Length > 1) // если больше одного попадания - ищем очередность...
@@ -279,6 +330,7 @@ public class TouchScript : MonoBehaviour
         }
         else // ...иначе очередность не нужна
         {
+            if (!toUp) return _ray.origin; // если вниз и всего одна точка - ниже нет этажей - возвращаем исходную точку
             min1 = 0;
             min2 = 0;
         }
@@ -297,17 +349,52 @@ public class TouchScript : MonoBehaviour
                     Physics.Raycast(ray, out rh); // рейкастим, проверять не надо, ведь мы ТОЧНО над коллайдером
                     print("To up:" + rh.collider.name); // дебаг ))
                     return rh.point; // отдаём точку
-                    
                 }
-
             case (false): // если вниз, то просто отдаём вторую точку
                 {
                     print("To down:" + rhs[min2].collider.name); // дебаг ))
                     return rhs[min2].point; // отдаём точку
-                   
                 }
-
         }
-        return Vector3.zero;
+        return _ray.origin;
     }
+
+    /// <summary>
+    /// Заглушка корутины плавного движения - просто запускает корутину
+    /// </summary>
+    /// <param name="_target">Объект движения</param>
+    /// <param name="_from">Координата начала</param>
+    /// <param name="_to">Координата конца</param>
+    /// <param name="_time">Длительность</param>
+    /// <returns></returns>
+    private void SmoothMove(Transform _target, Vector3 _from, Vector3 _to, float _time)
+    {
+        StartCoroutine(C_SmoothMove(_target, _from, _to, _time));
+    }
+    /// <summary>
+    /// Корутина плавного движения
+    /// </summary>
+    /// <param name="_target">Объект движения</param>
+    /// <param name="_from">Координата начала</param>
+    /// <param name="_to">Координата конца</param>
+    /// <param name="_time">Длительность</param>
+    /// <returns></returns>
+    private IEnumerator C_SmoothMove(Transform _target, Vector3 _from, Vector3 _to, float _time)
+    {
+        if (isMoving) yield break; // если запустили при работающей корутине - выходим
+        isMoving = true; // флаг движения включим
+
+        float timer = 0f; // внутренний таймер
+        while (timer <= _time)
+        {
+            float coeff = timer / _time; // для лерпа
+            _target.position = Vector3.Lerp(_from, _to, timer); // перемещаем лерпом
+            timer += Time.deltaTime; // таймер увеличиваем
+            yield return null; // ждём следующий кадр
+        }
+        isMoving = false;  // флаг движения выключим
+    }
+
+    #endregion
+
 }

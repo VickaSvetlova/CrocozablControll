@@ -1,0 +1,191 @@
+8TH WALL LICENSE AGREEMENT
+
+BY DOWNLOADING OUR TECHNOLOGY (AS DEFINED BELOW) AND/OR OUR SAMPLE APPLICATION
+(AS DEFINED BELOW), YOU OR THE ENTITY OR COMPANY THAT YOU REPRESENT (“LICENSEE”)
+ARE UNCONDITIONALLY CONSENTING TO BE BOUND BY, ARE BECOMING A PARTY TO THIS 8TH
+WALL LICENSE AGREEMENT (“AGREEMENT”), AND ARE HEREBY REPRESENTING AND WARRANTING
+THAT LICENSEE IS AUTHORIZED TO BIND LICENSEE. LICENSEE’S DOWNLOAD, INSTALLATION
+OR CONTINUED USE OF THE TECHNOLOGY AND/OR THE SAMPLE APPLICATION SHALL ALSO
+CONSTITUTE ASSENT TO THE TERMS OF THIS AGREEMENT.  IF LICENSEE DOES NOT
+UNCONDITIONALLY AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, LICENSEE WILL HAVE
+NO RIGHT TO USE THE TECHNOLOGY OR THE SAMPLE APPLICATION. IF THESE TERMS ARE
+CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO  ALL OF THESE TERMS, TO
+THE EXCLUSION OF ALL OTHER TERMS.
+
+1.    Limited License to Use the Technology. Subject to full compliance with the
+terms of this Agreement, 8th Wall, Inc. (“we,” “us” “our” or “8th Wall”) hereby
+grants Licensee a limited, personal, non-sublicensable, non-transferable,
+royalty-free, nonexclusive license to use the plug-ins and software available by
+8th Wall for download that enables augmented reality functionality in mobile
+phones (the “Technology”) for the sole purpose of allowing Licensee to build
+(strictly in accordance with our documentation) software applications (each an
+“App”) and that may communicate with 8th Wall’s proprietary augmented reality
+service (the “Service”), and for other purposes authorized by us in writing.
+
+2.    Limited License to Distribute the Technology in Licensee’s App. Subject to
+full compliance with the terms of this Agreement, we hereby grant Licensee a
+limited, personal, non-sublicensable, non-transferable, royalty-free,
+nonexclusive license to distribute the Technology in object code form only as
+part of an App, and only subject to an end-user license agreement which is at
+least as protective of our proprietary rights in the Technology as those
+contained in this agreement. Without limiting the foregoing, these terms and
+conditions must include terms for 8th Wall’s benefit regarding (a) restrictions
+on reverse engineering (to the maximum extent permitted by applicable law); (b)
+disclaimer of warranties; and (c) limitation of liability, all of which must be
+at least as beneficial to 8th Wall as those contained herein.
+ 
+3.    Limited License to Use the Sample Application. Subject to full compliance
+with the terms of this Agreement, we hereby grant Licensee a limited, personal,
+non-sublicensable, non-transferable, royalty-free, nonexclusive license to
+download and use the sample application available by 8th Wall for download (the
+“Sample Application”) solely for the purpose of evaluating the Sample
+Application and the functionality of the Technology.
+
+4.    Restrictions. Licensee must not have a current or proposed program that is
+competitive with the Technology.  If Licensee intends at any time to institute
+such a program, Licensee will promptly inform 8th Wall, will not use in that
+program (whether for advice, review or otherwise) any personnel who have had
+access to any part of the Technology, and will not use any part of the
+Technology or any related intellectual property in connection with that program.
+Except in connection with Licensee’s limited right to distribute the Technology
+in object code form in accordance with Section 2, Licensee will not disclose (or
+allow access to) the Technology (or any information derived from them) to any
+third party and will limit access to the Technology (and any derived
+information) to individuals who are developing the App and who are bound by this
+agreement (“Authorized Users”). In support of this obligation, Licensee will
+apply at least the same security that Licensee uses to protect Licensee’s own
+most confidential information.  Licensee will not modify, reverse engineer or
+otherwise attempt to discover the source code of any aspect of the Technology or
+the Sample Application or authorize or encourage anyone else to do so (except to
+the extent such restriction is prohibited by applicable law).
+
+5.    Changes to the Technology. Licensee’s App must maintain 100% compatibility
+with the Technology and the Service (including changes provided to Licensee by
+8th Wall which shall be implemented in the App promptly thereafter). Licensee
+understands and agrees that we may cease support of old versions or releases of
+the Technology at any time. We may also automatically update the version of the
+Technology that Licensee is using and/or which is installed on each Device of
+Licensee’s end users.
+ 
+6.    Fees. Certain versions or functionalities of the Technology may currently
+be free of charge, but we reserve the right to make certain additional features,
+updates or new versions/releases available only for payment.
+
+7.    Improvements. Licensee hereby grants 8th Wall a nonexclusive,
+sublicensable, fully-paid, worldwide license to fully exercise and exploit all
+copyright or patent rights (“Intellectual Property Rights”) with respect to
+improvements or extensions that may be created by or for Licensee and are
+relevant to the Technology.  For clarity, Licensee is not required to disclose
+any such Intellectual Property Rights to 8th Wall.
+
+8.    Data Collection.
+      a.  Licensee agrees and hereby consents to 8th Wall’s collection of the
+          following data and information in connection with Licensee’s use of the
+          Technology in an App which 8th Wall may use for its business purposes:
+            i.  The version of the Technology;
+           ii.  The company name associated with the development tool Licensee
+                uses to develop the App (the “Developer Tool”) (e.g. Unity);
+          iii.  The organization reverse domain associated with the App;
+           iv.  The operating system and version running on Licensee’s Developer
+                Tool, (e.g. Mac OSX 12.5.1 / Windows 10.02);
+            v.  The version of Licensee’s Developer Tool, (e.g. Unity 5.6.1f
+                Pro);
+           vi.  The system language set on the operating system;
+          vii.  A truncated hash of a device unique identifier;
+         viii.  A truncated hash of the user ID associated with the developer
+                tool; and
+           ix.  Other similar non-personalized data. 
+
+      b.  Licensee agrees and hereby consents to 8th Wall’s collection of the
+          following data and information in connection use of the App on a
+          Device, which 8th Wall may use for its business purposes:
+            i.  A unique identifier from each Device; 
+           ii. The device model and manufacturer (e.g. Samsung S8 us-edition); 
+          iii. The bundle ID of the App; 
+           iv. Timing, performance, and error metrics of the App; 
+            v. Each Device’s camera characteristics (e.g., the focal length of
+               the camera);
+           vi. The operating system and version of each Device (e.g. Android
+               6.0.);
+          vii. The country in which each Device is located; 
+         viii. The configured language set on each Device; and
+           ix. Other similar non-personalized data. 
+
+Licensee represents and warrants that it (i) has and will obtain all consents
+and permissions (from other Authorized Users as well as end users of the App and
+of each Device) required for Licensee to grant the rights and permissions in
+this Section 8 and to enable 8th Wall to legally collect, retain and use  the
+data described in this Section 8 (including, at a minimum, publishing an
+appropriate privacy policy); and (ii) will comply with all applicable laws,
+rules and regulations (including those relating to export control).
+
+9.    Indemnification. Licensee shall defend, indemnify, and hold harmless 8th
+Wall, its affiliates and each of its and its affiliates’ employees, contractors,
+directors, suppliers and representatives from all liabilities, claims, and
+expenses (including reasonable attorneys’ fees), that arise from or relate to
+(i) Licensee’s, an Authorized End User’s or Licensee’s end users’ use or misuse
+of the Technology (ii) Licensee’s violation of this Agreement or breach of its
+representations or warranties, (iii) infringement by Licensee or any Authorized
+User of any intellectual property or other right of any person or entity, or
+(iv) a claim alleging that Licensee or the App infringes or violates the rights
+of, or has caused harm to, a third party.  8th Wall reserves the right to assume
+the exclusive defense and control of any matter otherwise subject to
+indemnification by Licensee, in which event Licensee shall assist and cooperate
+with 8th Wall in asserting any available defenses.
+
+10.   DISCLAIMER. 8TH WALL PROVIDES THE TECHNOLOGY AND THE SAMPLE APPLICATION
+“AS IS” AND WITHOUT WARRANTY OF ANY KIND, AND HEREBY DISCLAIMS ALL EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, PERFORMANCE, ACCURACY, RELIABILITY, AND
+NON-INFRINGEMENT. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF
+THIS AGREEMENT. SOME STATES DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED
+WARRANTY LASTS SO THE FOREGOING LIMITATIONS MAY NOT APPLY TO LICENSEE.
+
+11.   LIMITATION OF LIABILITY. UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY,
+INCLUDING, BUT NOT LIMITED TO, TORT, CONTRACT, NEGLIGENCE, STRICT LIABILITY, OR
+OTHERWISE, SHALL 8TH WALL OR ITS SUPPLIERS OR RESELLERS BE LIABLE TO LICENSEE OR
+ANY OTHER PERSON FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOST PROFITS, LOSS OF GOODWILL,
+ACCURACY OF RESULTS, DEVICE FAILURE OR MALFUNCTION, OR DAMAGES RESULTING FROM
+LICENSEE’S USE OF THE TECHNOLOGY OR THE SAMPLE APPLICATION. 8TH WALL’S LIABILITY
+FOR DAMAGES OF ANY KIND WHATSOEVER ARISING OUT OF THIS AGREEMENT SHALL BE
+LIMITED TO $100. THE FOREGOING WILL NOT APPLY TO DAMAGES FOR BODILY INJURY THAT,
+UNDER APPLICABLE LAW, CANNOT BE SO LIMITED. THE FOREGOING LIMITATIONS SHALL
+APPLY EVEN IF LICENSEE HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES.
+SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION AND EXCLUSION MAY NOT APPLY TO
+LICENSEE.
+
+12.   Term; Termination. This Agreement is effective as of the date Licensee
+begins using the Technology (whether in the development environment or in Apps)
+or the Sample Application and is effective until terminated in accordance with
+this Section 12. Licensee may terminate this Agreement at any time by removing
+or ceasing all use of the Technology or the Sample Application. We may terminate
+this Agreement and Licensee’s access to the Technology and/or Sample Application
+at any time and for any reason. All licenses granted to Licensee hereunder
+terminate upon termination or expiration of this Agreement.
+
+13.   Miscellaneous. This Agreement represents the complete agreement concerning
+the subject matter hereof between the parties and supersedes all prior
+agreements and representations between them. This Agreement may be amended only
+by a writing executed by both parties. If any provision of this Agreement is
+held to be unenforceable for any reason, such provision shall be reformed only
+to the extent necessary to make it enforceable. The failure of 8th Wall to act
+with respect to a breach of this Agreement by Licensee or others does not
+constitute a waiver and shall not limit 8th Wall’s rights with respect to such
+breach or any subsequent breaches. This Agreement is personal to Licensee and
+may not be assigned or transferred for any reason whatsoever without 8th Wall’s
+consent and any action or conduct in violation of the foregoing shall be void
+and without effect. 8th Wall expressly reserves the right to assign this
+Agreement and to delegate any of its obligations hereunder. This Agreement shall
+be governed by and construed under California law as such law applies to
+agreements between California residents entered into and to be performed within
+California. The sole and exclusive jurisdiction and venue for actions arising
+under this Agreement shall be the State and Federal courts in San Francisco,
+California; both parties hereby agree to service of process in accordance with
+the rules of such courts. The party prevailing in any dispute under this
+Agreement shall be entitled to its costs and legal fees.
+
+Please contact support@8thwall.com if you have any questions or concerns
+regarding the Technology or the Sample Application. 
+
